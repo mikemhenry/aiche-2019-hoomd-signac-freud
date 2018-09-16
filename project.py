@@ -22,8 +22,6 @@ def compute_poly_area(vertices):
     return a / 2.0
 
 
-
-
 class Project(FlowProject):
     pass
 
@@ -110,7 +108,7 @@ def compute_psi(job):
         psi = list()
         box = trajectory[-1].configuration.box[:2].tolist()
         for frame in trajectory[1:]:
-#         box = frame.configuration.box[:2].tolist()
+            # box = frame.configuration.box[:2].tolist()
             steps.append(frame.configuration.step)
             psi.append(op_hex.compute(box, frame.particles.position).psi.copy())
 
