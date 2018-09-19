@@ -106,9 +106,8 @@ def compute_psi(job):
     with gsd.hoomd.open(job.fn('trajectory.gsd')) as trajectory:
         steps = list()
         psi = list()
-        box = trajectory[-1].configuration.box[:2].tolist()
         for frame in trajectory[1:]:
-            # box = frame.configuration.box[:2].tolist()
+            box = frame.configuration.box[:2].tolist()
             steps.append(frame.configuration.step)
             psi.append(op_hex.compute(box, frame.particles.position).psi.copy())
 
