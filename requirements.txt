@@ -1,0 +1,9 @@
+hoomd
+gsd
+freud
+signac
+signac-flow
+numpy
+matplotlib
+jupyter
+ipywidgets
