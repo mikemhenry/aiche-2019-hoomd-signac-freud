@@ -9,7 +9,7 @@ dependencies:
   - ipywidgets>=7
   - jupyter>=1
   - matplotlib=3
-  - python=3.6
+  - python>=3.6
   - signac>=0.9.3
   - signac-flow>=0.6.3
   - numpy>=1.15
