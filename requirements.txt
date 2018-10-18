@@ -1,0 +1,9 @@
+gsd>=1.5.4
+freud-analysis>=0.10
+signac>=0.9.3
+signac-flow>=0.6.3
+numpy>=1.15
+matplotlib>=3
+jupyter>=1.0
+ipywidgets>=7.4.2
+click>=7

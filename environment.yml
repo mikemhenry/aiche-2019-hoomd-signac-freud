@@ -1,0 +1,16 @@
+name: aiche-2018
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - hoomd>=2.3.5
+  - freud>=0.11.0
+  - gsd>=1.5.4
+  - ipywidgets>=7
+  - jupyter>=1
+  - matplotlib=3
+  - python>=3.6
+  - signac>=0.9.3
+  - signac-flow>=0.6.3
+  - numpy>=1.15
+  - nb_conda_kernels
