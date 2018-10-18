@@ -33,6 +33,8 @@ Note: You might need to install the `nb_conda_kernels` package if the Jupyter no
 
 ### With pip
 
+HOOMD-blue cannot be installed with pip, so that would need to happen separately.
+All other dependencies are listed in the `requirements.txt` file and can be installed with:
 
     ~/aiche-2018-hoomd-signac-freud $ pip install -r requirements.txt
 
