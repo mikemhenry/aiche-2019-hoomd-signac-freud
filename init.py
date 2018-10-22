@@ -4,13 +4,17 @@ import argparse
 import signac
 
 
+def init_jobs(project, n, betaP, num_replicas=3):
+    for seed in range(num_replicas):
+        job = project.open_job(dict(n=n, betaP=betaP, seed=seed))
+        job.doc.setdefault('steps', 20000)
+
+
 def main(args):
     project = signac.init_project("polygon-fluid-solid-transition")
 
     for betaP in args.betaP:
-        for seed in range(args.replicas):
-            job = project.open_job(dict(n=args.num_vertices, betaP=betaP, seed=seed))
-            job.doc.setdefault('steps', 20000)
+        init_jobs(project, args.num_vertices, betaP, args.replicas)
 
 
 if __name__ == '__main__':
