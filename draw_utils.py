@@ -1,11 +1,13 @@
 import numpy as np
-from matplotlib import collections, patches, cm, colors, pyplot as plt
+from matplotlib import collections, patches, cm, pyplot as plt
 import math
 import geometry
+
 
 def quat2ang(quats):
     """Convert quaternions to angles."""
     return np.mod(2*np.arctan2(quats[:, 3], quats[:, 0]), 2*np.pi)
+
 
 def draw_config(fig, ax, box, pos, angles, psi, nverts):
     ax.set_xlim((-box.Lx/2, box.Lx/2))
@@ -16,15 +18,20 @@ def draw_config(fig, ax, box, pos, angles, psi, nverts):
 
     for i, p in enumerate(pos):
         # Rotate polygon
-        mat = np.array([[np.cos(angles[i]), np.sin(angles[i])], [-np.sin(angles[i]), np.cos(angles[i])]])
+        mat = np.array([
+            [np.cos(angles[i]), np.sin(angles[i])],
+            [-np.sin(angles[i]), np.cos(angles[i])]])
         coords = verts.dot(mat)
-        ax.add_patch(patches.Polygon(xy=p[:2]+coords, color=cmap((np.angle(psi[i])+math.pi)/(2*math.pi))))
+        ax.add_patch(patches.Polygon(
+            xy=p[:2]+coords, facecolor=cmap((np.angle(psi[i])+math.pi)/(2*math.pi)), linewidth=0))
+
 
 def draw_pmft(fig, ax, pmft, nverts):
     im = ax.contourf(pmft.X, pmft.Y, pmft.PMFT)
     cb = fig.colorbar(im, ax=ax)
     cb.set_label("$k_b T$", fontsize=12)
     ax.add_patch(patches.Polygon(xy=geometry.get_vertices(nverts)))
+
 
 def draw_voronoi(fig, ax, box, cells):
     """Draw voronoi tesselation"""
