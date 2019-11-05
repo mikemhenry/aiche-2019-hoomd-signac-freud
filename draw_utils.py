@@ -23,11 +23,13 @@ def draw_config(fig, ax, box, pos, angles, psi, nverts):
             [-np.sin(angles[i]), np.cos(angles[i])]])
         coords = verts.dot(mat)
         ax.add_patch(patches.Polygon(
-            xy=p[:2]+coords, facecolor=cmap((np.angle(psi[i])+math.pi)/(2*math.pi)), linewidth=0))
+            xy=p[:2]+coords,
+            facecolor=cmap((np.angle(psi[i])+math.pi)/(2*math.pi)),
+            linewidth=0))
 
 
 def draw_pmft(fig, ax, pmft, nverts):
-    im = ax.contourf(pmft.X, pmft.Y, pmft.PMFT)
+    im = ax.contourf(pmft.bin_centers[0], pmft.bin_centers[1], pmft.pmft)
     cb = fig.colorbar(im, ax=ax)
     cb.set_label("$k_b T$", fontsize=12)
     ax.add_patch(patches.Polygon(xy=geometry.get_vertices(nverts)))
